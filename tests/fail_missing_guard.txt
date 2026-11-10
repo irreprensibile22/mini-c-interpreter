@@ -1,0 +1,14 @@
+{
+  int n;
+  int sum;
+
+  n = 10;
+  sum = 10;
+
+  while {
+    sum = sum + n;
+    n = n - 1;
+    print(sum);
+  }
+}
+

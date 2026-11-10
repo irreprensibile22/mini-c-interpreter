@@ -1,0 +1,14 @@
+{
+  int a;
+  int b;
+  int iratio;
+  int nearest;
+
+  a = 10;
+  b = 3;
+
+  iratio = a / b;
+  nearest = iratio * b;
+
+  print(a - nearest);
+}	        

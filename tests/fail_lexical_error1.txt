@@ -1,0 +1,9 @@
+{
+  int var;
+
+  print(14 * 10 + 25);
+  var = 10 % 5;
+  print(1000 / var);
+  var = 10 * 20;
+  print(1000 / var);
+}

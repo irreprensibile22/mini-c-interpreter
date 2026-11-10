@@ -1,4 +1,0 @@
-{
-  boolean flag;
-  flag = 1;
-}

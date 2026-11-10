@@ -1,0 +1,15 @@
+{
+  int a;
+  int b;
+  int result;
+
+  a = 32;
+  b = 3;
+  result = 0;
+  while (a > 1) {
+    a = a / b;
+    result = result + 1;
+  }
+  print(result);
+}
+

@@ -1,0 +1,14 @@
+{
+  int a;
+  int b;
+  int result;
+
+  a = 2;
+  b = 2;
+  result = 0;
+  while (a > 1) {
+    a = a / b;
+    result = result + 1;
+  }
+  print(result);
+}	        

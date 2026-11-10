@@ -1,0 +1,28 @@
+{
+  int n;
+  int d;
+  boolean isprime;
+  
+  n = 11;
+  d = n / 2;
+
+  isprime = true;
+  
+  while (d > 1) {
+    int ires;
+    int nearest;
+    int remainder;
+    
+    ires = n / d;
+    nearest = ires * d;
+    remainder = n - nearest;
+    if (isprime && remainder == 0) {
+      isprime = false;
+    }
+    d = d - 1;
+  }
+  
+  print(isprime);
+}
+    
+

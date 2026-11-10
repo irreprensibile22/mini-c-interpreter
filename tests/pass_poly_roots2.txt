@@ -1,0 +1,22 @@
+{
+  int a;
+  int b;
+  int c;
+  int delta;
+
+  a = 4;
+  b = 7;
+  c = -10;
+
+  delta = (b * b) - (4 * a * c);
+
+  if (delta > 0) {
+    print(1);
+  } else {
+    if (delta < 0) {
+      print(-1);
+    } else {
+      print(0);
+    }
+  }      
+}

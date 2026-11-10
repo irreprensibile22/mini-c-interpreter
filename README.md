@@ -145,7 +145,7 @@ tests/run_tests.sh                 # builds the interpreter with g++ in a tempor
 tests/run_tests.sh ./interpreter   # or uses an existing build
 ```
 
-The script prints a diff for every failing test and a final summary such as `34 passed, 0 failed`.
+The script prints a diff for every failing test and a final summary such as `40 passed, 0 failed`.
 
 ---
 

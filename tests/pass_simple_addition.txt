@@ -1,0 +1,9 @@
+{
+  int x;
+  int y;
+
+  x = 10;
+  y = 5;
+
+  print(x + y);
+}
