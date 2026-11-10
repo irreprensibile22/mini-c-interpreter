@@ -1,0 +1,13 @@
+{
+  boolean a;
+  boolean b;
+
+  a = true;
+  b = !a;
+  print(a);
+  print(b);
+  print(a || b && false);
+  print((a || b) && false);
+  print(a == !b);
+  print(3 <= 3 != false);
+}

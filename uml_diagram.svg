@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1460 948" width="1460" height="948">
+  <title>UML Class Diagram - C Subset Interpreter</title>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #1e293b; text-anchor: middle; }
+      .subtitle { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+      .class-body, .enum-body { fill: #ffffff; }
+      .class-head { fill: #eff6ff; }
+      .enum-head { fill: #f5f3ff; }
+      .class-border { fill: none; stroke: #3b82f6; stroke-width: 2; }
+      .enum-border { fill: none; stroke: #8b5cf6; stroke-width: 2; }
+      .class-name { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #1e3a8a; text-anchor: middle; }
+      .enum-name { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #5b21b6; text-anchor: middle; }
+      .stereo { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 11px; font-style: italic; fill: #64748b; text-anchor: middle; }
+      .sep { stroke: #cbd5e1; stroke-width: 1.2; }
+      .member { font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace; font-size: 11.5px; fill: #334155; }
+      .assoc { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .dep { stroke: #64748b; stroke-width: 1.5; fill: none; stroke-dasharray: 5,4; }
+      .gen { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .label { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 11px; font-style: italic; fill: #475569; }
+      .legend { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; }
+      .legend-title { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; }
+    </style>
+    <marker id="open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <polyline points="0 0, 9 4, 0 8" fill="none" stroke="#64748b" stroke-width="1.5" />
+    </marker>
+    <marker id="diamond" markerWidth="14" markerHeight="8" refX="0" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <polygon points="0 4, 7 0, 14 4, 7 8" fill="#3b82f6" />
+    </marker>
+    <marker id="triangle" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <polygon points="1 1, 13 6, 1 11" fill="#ffffff" stroke="#64748b" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+  <text x="730.0" y="42" class="title">UML Class Diagram — C Subset Interpreter</text>
+  <text x="730.0" y="66" class="subtitle">Tokenizer → Parser (syntax + static type checking) → Evaluator (tree-walking execution)</text>
+  <g>
+    <rect x="30" y="100" width="290" height="253" rx="6" class="class-body" />
+    <path d="M 36,100 H 314 A 6 6 0 0 1 320,106 V 145 H 30 V 106 A 6 6 0 0 1 36,100 Z" class="class-head" />
+    <rect x="30" y="100" width="290" height="253" rx="6" class="class-border" />
+    <text x="175.0" y="119" class="stereo">«class»</text>
+    <text x="175.0" y="137" class="class-name">Tokenizer</text>
+    <line x1="30" y1="145" x2="320" y2="145" class="sep" />
+    <text x="42" y="165" class="member">- input : istream&amp;</text>
+    <text x="42" y="183" class="member">- currentChar : int</text>
+    <text x="42" y="201" class="member">- line : int</text>
+    <text x="42" y="219" class="member">- column : int</text>
+    <line x1="30" y1="231" x2="320" y2="231" class="sep" />
+    <text x="42" y="251" class="member">+ Tokenizer(input: istream&amp;)</text>
+    <text x="42" y="269" class="member">+ getNextToken() : Token</text>
+    <text x="42" y="287" class="member">- readNextChar() : void</text>
+    <text x="42" y="305" class="member">- skipWhitespace() : void</text>
+    <text x="42" y="323" class="member">- scanIdentifier(line, column) : Token</text>
+    <text x="42" y="341" class="member">- scanNumber(line, column) : Token</text>
+  </g>
+  <g>
+    <rect x="30" y="393" width="290" height="181" rx="6" class="class-body" />
+    <path d="M 36,393 H 314 A 6 6 0 0 1 320,399 V 438 H 30 V 399 A 6 6 0 0 1 36,393 Z" class="class-head" />
+    <rect x="30" y="393" width="290" height="181" rx="6" class="class-border" />
+    <text x="175.0" y="412" class="stereo">«class»</text>
+    <text x="175.0" y="430" class="class-name">Token</text>
+    <line x1="30" y1="438" x2="320" y2="438" class="sep" />
+    <text x="42" y="458" class="member">+ type : TokenType</text>
+    <text x="42" y="476" class="member">+ value : string</text>
+    <text x="42" y="494" class="member">+ line : int</text>
+    <text x="42" y="512" class="member">+ column : int</text>
+    <line x1="30" y1="524" x2="320" y2="524" class="sep" />
+    <text x="42" y="544" class="member">+ Token()</text>
+    <text x="42" y="562" class="member">+ Token(type, value, line, column)</text>
+  </g>
+  <g>
+    <rect x="30" y="614" width="290" height="221" rx="6" class="enum-body" />
+    <path d="M 36,614 H 314 A 6 6 0 0 1 320,620 V 659 H 30 V 620 A 6 6 0 0 1 36,614 Z" class="enum-head" />
+    <rect x="30" y="614" width="290" height="221" rx="6" class="enum-border" />
+    <text x="175.0" y="633" class="stereo">«enumeration»</text>
+    <text x="175.0" y="651" class="enum-name">TokenType</text>
+    <line x1="30" y1="659" x2="320" y2="659" class="sep" />
+    <text x="42" y="679" class="member">IF, ELSE, WHILE, DO, BREAK,</text>
+    <text x="42" y="697" class="member">INT, BOOLEAN, TRUE, FALSE, PRINT,</text>
+    <text x="42" y="715" class="member">ID, NUM,</text>
+    <text x="42" y="733" class="member">PLUS, MINUS, TIMES, DIVIDE,</text>
+    <text x="42" y="751" class="member">EQ, NEQ, LT, LEQ, GT, GEQ,</text>
+    <text x="42" y="769" class="member">AND, OR, NOT, ASSIGN,</text>
+    <text x="42" y="787" class="member">SEMICOLON, LPAREN, RPAREN, LBRACE,</text>
+    <text x="42" y="805" class="member">RBRACE, LBRACKET, RBRACKET,</text>
+    <text x="42" y="823" class="member">END_OF_FILE</text>
+  </g>
+  <g>
+    <rect x="395" y="100" width="335" height="487" rx="6" class="class-body" />
+    <path d="M 401,100 H 724 A 6 6 0 0 1 730,106 V 145 H 395 V 106 A 6 6 0 0 1 401,100 Z" class="class-head" />
+    <rect x="395" y="100" width="335" height="487" rx="6" class="class-border" />
+    <text x="562.5" y="119" class="stereo">«class»</text>
+    <text x="562.5" y="137" class="class-name">Parser</text>
+    <line x1="395" y1="145" x2="730" y2="145" class="sep" />
+    <text x="407" y="165" class="member">- tokenizer : Tokenizer&amp;</text>
+    <text x="407" y="183" class="member">- currentToken : Token</text>
+    <text x="407" y="201" class="member">- symbolTable : unordered_map&lt;string, Symbol&gt;</text>
+    <text x="407" y="219" class="member">- loopDepth : int</text>
+    <line x1="395" y1="231" x2="730" y2="231" class="sep" />
+    <text x="407" y="251" class="member">+ Parser(tokenizer: Tokenizer&amp;)</text>
+    <text x="407" y="269" class="member">+ parseProgram() : ASTNode*</text>
+    <text x="407" y="287" class="member">- consume(expectedType: TokenType) : void</text>
+    <text x="407" y="305" class="member">- parseBlock() : ASTNode*</text>
+    <text x="407" y="323" class="member">- parseDecls() : ASTNode*</text>
+    <text x="407" y="341" class="member">- parseDecl() : ASTNode*</text>
+    <text x="407" y="359" class="member">- parseStmts() : ASTNode*</text>
+    <text x="407" y="377" class="member">- parseStmt() : ASTNode*</text>
+    <text x="407" y="395" class="member">- parseLoc() : ASTNode*</text>
+    <text x="407" y="413" class="member">- parseBool() : ASTNode*</text>
+    <text x="407" y="431" class="member">- parseJoin() : ASTNode*</text>
+    <text x="407" y="449" class="member">- parseEquality() : ASTNode*</text>
+    <text x="407" y="467" class="member">- parseRel() : ASTNode*</text>
+    <text x="407" y="485" class="member">- parseExpr() : ASTNode*</text>
+    <text x="407" y="503" class="member">- parseTerm() : ASTNode*</text>
+    <text x="407" y="521" class="member">- parseUnary() : ASTNode*</text>
+    <text x="407" y="539" class="member">- parseFactor() : ASTNode*</text>
+    <text x="407" y="557" class="member">- tokenTypeToString(type: TokenType) : string</text>
+    <text x="407" y="575" class="member">- where() : string</text>
+  </g>
+  <g>
+    <rect x="395" y="639" width="335" height="127" rx="6" class="class-body" />
+    <path d="M 401,639 H 724 A 6 6 0 0 1 730,645 V 684 H 395 V 645 A 6 6 0 0 1 401,639 Z" class="class-head" />
+    <rect x="395" y="639" width="335" height="127" rx="6" class="class-border" />
+    <text x="562.5" y="658" class="stereo">«struct»</text>
+    <text x="562.5" y="676" class="class-name">Symbol</text>
+    <line x1="395" y1="684" x2="730" y2="684" class="sep" />
+    <text x="407" y="704" class="member">+ baseType : ASTNode::ValueType</text>
+    <text x="407" y="722" class="member">+ dims : vector&lt;int&gt;</text>
+    <line x1="395" y1="734" x2="730" y2="734" class="sep" />
+    <text x="407" y="754" class="member">+ isArray() : bool</text>
+  </g>
+  <g>
+    <rect x="800" y="100" width="300" height="181" rx="6" class="class-body" />
+    <path d="M 806,100 H 1094 A 6 6 0 0 1 1100,106 V 145 H 800 V 106 A 6 6 0 0 1 806,100 Z" class="class-head" />
+    <rect x="800" y="100" width="300" height="181" rx="6" class="class-border" />
+    <text x="950.0" y="119" class="stereo">«class»</text>
+    <text x="950.0" y="137" class="class-name">ASTNode</text>
+    <line x1="800" y1="145" x2="1100" y2="145" class="sep" />
+    <text x="812" y="165" class="member">+ type : NodeType</text>
+    <text x="812" y="183" class="member">+ value : string</text>
+    <text x="812" y="201" class="member">+ valuetype : ValueType</text>
+    <text x="812" y="219" class="member">+ children : vector&lt;ASTNode*&gt;</text>
+    <line x1="800" y1="231" x2="1100" y2="231" class="sep" />
+    <text x="812" y="251" class="member">+ ASTNode(type, value, valuetype)</text>
+    <text x="812" y="269" class="member">+ ~ASTNode()</text>
+  </g>
+  <g>
+    <rect x="800" y="321" width="300" height="113" rx="6" class="enum-body" />
+    <path d="M 806,321 H 1094 A 6 6 0 0 1 1100,327 V 366 H 800 V 327 A 6 6 0 0 1 806,321 Z" class="enum-head" />
+    <rect x="800" y="321" width="300" height="113" rx="6" class="enum-border" />
+    <text x="950.0" y="340" class="stereo">«enumeration»</text>
+    <text x="950.0" y="358" class="enum-name">ASTNode::ValueType</text>
+    <line x1="800" y1="366" x2="1100" y2="366" class="sep" />
+    <text x="812" y="386" class="member">INT_TYPE</text>
+    <text x="812" y="404" class="member">BOOL_TYPE</text>
+    <text x="812" y="422" class="member">VOID_TYPE</text>
+  </g>
+  <g>
+    <rect x="800" y="474" width="300" height="185" rx="6" class="enum-body" />
+    <path d="M 806,474 H 1094 A 6 6 0 0 1 1100,480 V 519 H 800 V 480 A 6 6 0 0 1 806,474 Z" class="enum-head" />
+    <rect x="800" y="474" width="300" height="185" rx="6" class="enum-border" />
+    <text x="950.0" y="493" class="stereo">«enumeration»</text>
+    <text x="950.0" y="511" class="enum-name">ASTNode::NodeType</text>
+    <line x1="800" y1="519" x2="1100" y2="519" class="sep" />
+    <text x="812" y="539" class="member">BLOCK, DECLS, DECL, TYPE, BASIC, STMTS,</text>
+    <text x="812" y="557" class="member">IF, WHILE, DO, BREAK, PRINT, ASSIGN,</text>
+    <text x="812" y="575" class="member">LOC, ID, NUM, TRUE, FALSE,</text>
+    <text x="812" y="593" class="member">AND, OR, NOT, EQ, NEQ,</text>
+    <text x="812" y="611" class="member">LT, LEQ, GT, GEQ,</text>
+    <text x="812" y="629" class="member">PLUS, MINUS, TIMES, DIVIDE,</text>
+    <text x="812" y="647" class="member">UNARY_MINUS</text>
+  </g>
+  <g>
+    <rect x="1170" y="100" width="250" height="163" rx="6" class="class-body" />
+    <path d="M 1176,100 H 1414 A 6 6 0 0 1 1420,106 V 145 H 1170 V 106 A 6 6 0 0 1 1176,100 Z" class="class-head" />
+    <rect x="1170" y="100" width="250" height="163" rx="6" class="class-border" />
+    <text x="1295.0" y="119" class="stereo">«class»</text>
+    <text x="1295.0" y="137" class="class-name">Evaluator</text>
+    <line x1="1170" y1="145" x2="1420" y2="145" class="sep" />
+    <text x="1182" y="165" class="member">- variables : map&lt;string, int&gt;</text>
+    <text x="1182" y="183" class="member">- arrays : map&lt;string, Array&gt;</text>
+    <line x1="1170" y1="195" x2="1420" y2="195" class="sep" />
+    <text x="1182" y="215" class="member">+ Evaluator()</text>
+    <text x="1182" y="233" class="member">+ evaluate(node: ASTNode*) : int</text>
+    <text x="1182" y="251" class="member">- cell(loc: ASTNode*) : int&amp;</text>
+  </g>
+  <g>
+    <rect x="1170" y="319" width="250" height="95" rx="6" class="class-body" />
+    <path d="M 1176,319 H 1414 A 6 6 0 0 1 1420,325 V 364 H 1170 V 325 A 6 6 0 0 1 1176,319 Z" class="class-head" />
+    <rect x="1170" y="319" width="250" height="95" rx="6" class="class-border" />
+    <text x="1295.0" y="338" class="stereo">«struct»</text>
+    <text x="1295.0" y="356" class="class-name">Evaluator::Array</text>
+    <line x1="1170" y1="364" x2="1420" y2="364" class="sep" />
+    <text x="1182" y="384" class="member">+ dims : vector&lt;int&gt;</text>
+    <text x="1182" y="402" class="member">+ cells : vector&lt;int&gt;</text>
+  </g>
+  <g>
+    <rect x="1170" y="474" width="250" height="77" rx="6" class="class-body" />
+    <path d="M 1176,474 H 1414 A 6 6 0 0 1 1420,480 V 519 H 1170 V 480 A 6 6 0 0 1 1176,474 Z" class="class-head" />
+    <rect x="1170" y="474" width="250" height="77" rx="6" class="class-border" />
+    <text x="1295.0" y="493" class="stereo">«exception»</text>
+    <text x="1295.0" y="511" class="class-name">BreakException</text>
+    <line x1="1170" y1="519" x2="1420" y2="519" class="sep" />
+    <text x="1182" y="539" class="member">+ what() : const char*</text>
+  </g>
+  <g>
+    <rect x="1170" y="601" width="250" height="45" rx="6" class="class-body" />
+    <path d="M 1176,601 H 1414 A 6 6 0 0 1 1420,607 V 646 H 1170 V 607 A 6 6 0 0 1 1176,601 Z" class="class-head" />
+    <rect x="1170" y="601" width="250" height="45" rx="6" class="class-border" />
+    <text x="1295.0" y="629" class="class-name">std::exception</text>
+  </g>
+  <path d="M 175.0,353 V 393" class="dep" marker-end="url(#open)" />
+  <text x="183.0" y="378" class="label" text-anchor="start">«creates»</text>
+  <path d="M 175.0,574 V 614" class="assoc" marker-end="url(#open)" />
+  <text x="183.0" y="599" class="label" text-anchor="start">type</text>
+  <path d="M 395,200 H 320" class="assoc" marker-end="url(#open)" />
+  <text x="326" y="192" class="label" text-anchor="start">tokenizer</text>
+  <path d="M 395,473 H 320" class="assoc" marker-start="url(#diamond)" />
+  <text x="324" y="491" class="label" text-anchor="start">currentToken</text>
+  <path d="M 562.5,587 V 639" class="assoc" marker-start="url(#diamond)" />
+  <text x="570.5" y="617" class="label" text-anchor="start">symbolTable [0..*]</text>
+  <path d="M 730,200 H 800" class="dep" marker-end="url(#open)" />
+  <text x="736" y="192" class="label" text-anchor="start">«builds»</text>
+  <path d="M 1100,215 C 1138,215 1138,255 1100,255" class="assoc" marker-start="url(#diamond)" marker-end="url(#open)" />
+  <text x="1104" y="278" class="label" text-anchor="start">children [0..*]</text>
+  <path d="M 950.0,281 V 321" class="assoc" marker-end="url(#open)" />
+  <text x="958.0" y="306" class="label" text-anchor="start">valuetype</text>
+  <path d="M 800,261 H 776 V 554 H 800" class="assoc" marker-end="url(#open)" />
+  <text x="772" y="546" class="label" text-anchor="end">type</text>
+  <path d="M 730,736 H 1135 V 376 H 1100" class="assoc" marker-end="url(#open)" />
+  <text x="810" y="752" class="label" text-anchor="start">baseType</text>
+  <path d="M 1170,150 H 1100" class="dep" marker-end="url(#open)" />
+  <text x="1166" y="142" class="label" text-anchor="end">«evaluates»</text>
+  <path d="M 1295.0,263 V 319" class="assoc" marker-start="url(#diamond)" />
+  <text x="1303.0" y="295" class="label" text-anchor="start">arrays [0..*]</text>
+  <path d="M 1420,239 H 1440 V 504 H 1420" class="dep" marker-end="url(#open)" />
+  <text x="1416" y="462" class="label" text-anchor="end">«throws / catches»</text>
+  <path d="M 1295.0,551 V 601" class="gen" marker-end="url(#triangle)" />
+  <rect x="395" y="806" width="335" height="112" rx="6" class="legend" />
+  <text x="407" y="828" class="legend-title">Legend</text>
+  <path d="M 411,846 H 471" class="assoc" marker-end="url(#open)" />
+  <text x="485" y="850" class="member">association / reference</text>
+  <path d="M 411,864 H 471" class="assoc" marker-start="url(#diamond)" />
+  <text x="485" y="868" class="member">composition (owner side ◆)</text>
+  <path d="M 411,882 H 471" class="dep" marker-end="url(#open)" />
+  <text x="485" y="886" class="member">dependency (creates / uses)</text>
+  <path d="M 411,900 H 471" class="gen" marker-end="url(#triangle)" />
+  <text x="485" y="904" class="member">inheritance</text>
+</svg>

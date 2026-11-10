@@ -1,0 +1,186 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam shadowing true
+skinparam roundcorner 6
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 12
+
+title UML Class Diagram - C Subset Interpreter
+
+enum TokenType {
+    IF
+    ELSE
+    WHILE
+    DO
+    BREAK
+    INT
+    BOOLEAN
+    TRUE
+    FALSE
+    PRINT
+    ID
+    NUM
+    PLUS
+    MINUS
+    TIMES
+    DIVIDE
+    EQ
+    NEQ
+    LT
+    LEQ
+    GT
+    GEQ
+    AND
+    OR
+    NOT
+    ASSIGN
+    SEMICOLON
+    LPAREN
+    RPAREN
+    LBRACE
+    RBRACE
+    LBRACKET
+    RBRACKET
+    END_OF_FILE
+}
+
+class Token {
+    + type : TokenType
+    + value : std::string
+    + line : int
+    + column : int
+    + Token()
+    + Token(type: TokenType, value: std::string, line: int, column: int)
+}
+
+class Tokenizer {
+    - input : std::istream&
+    - currentChar : int
+    - line : int
+    - column : int
+    + Tokenizer(input: std::istream&)
+    + getNextToken() : Token
+    - readNextChar() : void
+    - skipWhitespace() : void
+    - scanIdentifier(line: int, column: int) : Token
+    - scanNumber(line: int, column: int) : Token
+}
+
+enum ValueType {
+    INT_TYPE
+    BOOL_TYPE
+    VOID_TYPE
+}
+
+enum NodeType {
+    BLOCK
+    DECLS
+    DECL
+    TYPE
+    BASIC
+    STMTS
+    IF
+    WHILE
+    DO
+    BREAK
+    PRINT
+    ASSIGN
+    LOC
+    ID
+    NUM
+    TRUE
+    FALSE
+    AND
+    OR
+    NOT
+    EQ
+    NEQ
+    LT
+    LEQ
+    GT
+    GEQ
+    PLUS
+    MINUS
+    TIMES
+    DIVIDE
+    UNARY_MINUS
+}
+
+class ASTNode {
+    + type : NodeType
+    + value : std::string
+    + valuetype : ValueType
+    + children : std::vector<ASTNode*>
+    + ASTNode(type: NodeType, value: std::string, valuetype: ValueType)
+    + ~ASTNode()
+}
+
+class Symbol <<struct>> {
+    + baseType : ASTNode::ValueType
+    + dims : std::vector<int>
+    + isArray() : bool
+}
+
+class Parser {
+    - tokenizer : Tokenizer&
+    - currentToken : Token
+    - symbolTable : std::unordered_map<std::string, Symbol>
+    - loopDepth : int
+    + Parser(tokenizer: Tokenizer&)
+    + parseProgram() : ASTNode*
+    - consume(expectedType: TokenType) : void
+    - parseBlock() : ASTNode*
+    - parseDecls() : ASTNode*
+    - parseDecl() : ASTNode*
+    - parseStmts() : ASTNode*
+    - parseStmt() : ASTNode*
+    - parseLoc() : ASTNode*
+    - parseBool() : ASTNode*
+    - parseJoin() : ASTNode*
+    - parseEquality() : ASTNode*
+    - parseRel() : ASTNode*
+    - parseExpr() : ASTNode*
+    - parseTerm() : ASTNode*
+    - parseUnary() : ASTNode*
+    - parseFactor() : ASTNode*
+    - tokenTypeToString(type: TokenType) : std::string
+    - where() : std::string
+}
+
+class "std::exception" as StdException
+
+class BreakException {
+    + what() : const char*
+}
+
+class Evaluator {
+    - variables : std::map<std::string, int>
+    - arrays : std::map<std::string, Array>
+    + Evaluator()
+    + evaluate(node: ASTNode*) : int
+    - cell(loc: ASTNode*) : int&
+}
+
+class "Evaluator::Array" as Array <<struct>> {
+    + dims : std::vector<int>
+    + cells : std::vector<int>
+}
+
+Token --> TokenType : type
+Tokenizer ..> Token : <<creates>>
+Parser --> Tokenizer : references
+Parser *-- Token : currentToken
+Parser *-- Symbol : symbolTable
+Parser ..> ASTNode : <<builds>>
+ASTNode *-- ASTNode : children [0..*]
+ASTNode --> NodeType : type
+ASTNode --> ValueType : valuetype
+Symbol --> ValueType : baseType
+Evaluator ..> ASTNode : <<evaluates>>
+Evaluator ..> BreakException : <<throws/catches>>
+Evaluator *-- Array : arrays
+StdException <|-- BreakException
+
+@enduml
+

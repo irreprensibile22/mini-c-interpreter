@@ -1,0 +1,7 @@
+{
+  int zero;
+  zero = 0;
+  // the right operand would divide by zero if it were evaluated
+  print(zero != 0 && 10 / zero > 1);
+  print(zero == 0 || 10 / zero > 1);
+}

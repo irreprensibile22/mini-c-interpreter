@@ -1,0 +1,11 @@
+{
+  int i;
+  i = 0;
+  while (i < 3) {
+    int counter;
+    counter = counter + 1;
+    i = i + 1;
+  }
+  // variables live in one global space: counter is still visible here
+  print(counter);
+}

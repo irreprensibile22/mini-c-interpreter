@@ -1,0 +1,10 @@
+{
+  int x;
+  x = 5;
+  // the else binds to the nearest if
+  if (x > 0)
+    if (x > 10)
+      print(1);
+    else
+      print(2);
+}
